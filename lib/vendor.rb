@@ -1,3 +1,5 @@
+require './lib/item'
+
 class Vendor
   attr_reader :name, :inventory
 
@@ -22,5 +24,15 @@ class Vendor
       @inventory[item] += quantity
     end
   end
+
+  def potential_revenue
+    revenue = 0
+    @inventory.each do |item|
+      require "pry"; binding.pry
+      revenue = @inventory[item] * @inventory[item][price]
+    end
+    revenue
+  end
+
 
 end
