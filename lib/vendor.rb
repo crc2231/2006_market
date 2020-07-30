@@ -11,7 +11,6 @@ class Vendor
   def check_stock(item)
       if @inventory.include?(item)
         stock_count = @inventory.fetch(item)
-        stock_count
       else
         0
       end
@@ -27,9 +26,8 @@ class Vendor
 
   def potential_revenue
     revenue = 0
-    @inventory.each do |item|
-      require "pry"; binding.pry
-      revenue = @inventory[item] * @inventory[item][price]
+    @inventory.keys.each do |key|
+      revenue += @inventory[key] * key.price
     end
     revenue
   end
